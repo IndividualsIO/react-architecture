@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 
 import history from './store/history';
 import configureStore from './store/configure';
-import App from './components/app';
+import App from './containers/app';
 
 const store = configureStore();
 
@@ -27,7 +27,7 @@ render(App);
 
 // Webpack Hot Module Replacement API
 if (module.hot) {
-	module.hot.accept('./components/app', () => {
+	module.hot.accept('./containers/app', () => {
 		render(App);
 	});
 }
