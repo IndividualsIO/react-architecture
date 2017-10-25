@@ -1,6 +1,6 @@
 
 # IntelliJ project files
-.idea
+.idea/
 *.iml
 out
 gen### Node template
@@ -60,7 +60,5 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
 
 
