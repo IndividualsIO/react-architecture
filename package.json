@@ -5,23 +5,23 @@
   "author": "Carlos Abdalla",
   "license": "MIT",
   "scripts": {
-		"precommit": "lint-staged",
+    "precommit": "lint-staged",
     "start": "npm-run-all --parallel start-dash",
     "start-dash": "webpack-dashboard -- babel-node tools/server.js",
     "start-message": "babel-node tools/start-message.js",
     "test": "mocha --reporter progress tools/test-setup.js \"src/**/*.test.js\"",
     "test:watch": "npm run test -- --watch"
   },
-	"lint-staged": {
-		"*.{js,jsx}": [
-			"eslint --fix",
-			"git add"
-		],
-		"*.css": [
-			"prettier --write",
-			"git add"
-		]
-	},
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.css": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "history": "^4.7.2",
     "prop-types": "^15.6.0",
@@ -56,7 +56,9 @@
     "expect": "^21.2.1",
     "express": "^4.16.2",
     "file-loader": "^1.1.5",
+    "husky": "^0.14.3",
     "jsdom": "^11.3.0",
+    "lint-staged": "^4.3.0",
     "mocha": "^4.0.1",
     "npm-run-all": "^4.1.1",
     "prettier": "^1.7.4",
