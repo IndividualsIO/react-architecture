@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all --parallel start-dash start-message",
+    "start": "npm-run-all --parallel start-dash",
     "start-dash": "webpack-dashboard -- babel-node tools/server.js",
     "start-message": "babel-node tools/start-message.js",
     "test": "mocha --reporter progress tools/test-setup.js \"src/**/*.test.js\"",

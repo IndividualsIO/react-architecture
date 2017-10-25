@@ -42,7 +42,9 @@ var jsdom = require('jsdom');
 var exposedProperties = ['window', 'navigator', 'document'];
 
 const { JSDOM } = jsdom;
-const { document } = (new JSDOM('<!doctype html><html><body></body></html>')).window;
+const { document } = new JSDOM(
+	'<!doctype html><html><body></body></html>'
+).window;
 global.document = document;
 global.window = document.defaultView;
 Object.keys(document.defaultView).forEach(property => {
