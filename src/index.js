@@ -2,18 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
-import createHistory from 'history/createBrowserHistory';
+import { Provider } from 'react-redux';
 
+import history from './store/history';
+import configureStore from './store/configure';
 import App from './components/app';
 
-const history = createHistory();
+const store = configureStore();
 
 const render = Component => {
 	ReactDOM.render(
 		<AppContainer>
-			<Router history={history}>
-				<Component />
-			</Router>
+			<Provider store={store}>
+				<Router history={history}>
+					<Component />
+				</Router>
+			</Provider>
 		</AppContainer>,
 		document.getElementById('app')
 	);

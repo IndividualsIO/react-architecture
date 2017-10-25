@@ -12,8 +12,8 @@ A small project of architecture to avoid to start a project from the very beginn
 - [X] Babel
 - [X] editorconfig
 - [X] eslint
-- [ ] Redux
-- [ ] Redux Thunk
+- [X] Redux
+- [X] Redux Thunk
 - [ ] Axios
 - [ ] Pre-commit
 - [X] Prettier

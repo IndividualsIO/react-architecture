@@ -1,17 +1,27 @@
 {
   "name": "beaver-staff",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "descriptiocn": "A small project of architecture to avoid to start a project from the very beginning using React + Redux in a simple way.",
+  "author": "Carlos Abdalla",
+  "license": "MIT",
   "scripts": {
+		"precommit": "lint-staged",
     "start": "npm-run-all --parallel start-dash",
     "start-dash": "webpack-dashboard -- babel-node tools/server.js",
     "start-message": "babel-node tools/start-message.js",
     "test": "mocha --reporter progress tools/test-setup.js \"src/**/*.test.js\"",
     "test:watch": "npm run test -- --watch"
   },
-  "author": "",
-  "license": "ISC",
+	"lint-staged": {
+		"*.{js,jsx}": [
+			"eslint --fix",
+			"git add"
+		],
+		"*.css": [
+			"prettier --write",
+			"git add"
+		]
+	},
   "dependencies": {
     "history": "^4.7.2",
     "prop-types": "^15.6.0",
@@ -51,6 +61,7 @@
     "npm-run-all": "^4.1.1",
     "prettier": "^1.7.4",
     "react-hot-loader": "^3.1.1",
+    "redux-immutable-state-invariant": "^2.1.0",
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.8.1",

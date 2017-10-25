@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import routes from '../routes';
 
@@ -7,7 +8,9 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="container-fluid">
-				<p>Header</p>
+				<p>
+					Header {this.props.isFetching && 'loading...'}
+				</p>
 				{routes}
 				{this.props.children}
 			</div>
@@ -17,7 +20,12 @@ class App extends React.Component {
 
 // Validation
 App.propTypes = {
-	children: PropTypes.element
+	children: PropTypes.element,
+	isFetching: PropTypes.bool.isRequired
 };
 
-export default App;
+const mapStateToProps = state => ({
+	isFetching: state.ajaxCallsInProgress > 0
+});
+
+export default connect(mapStateToProps)(App);
