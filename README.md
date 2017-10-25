@@ -8,6 +8,7 @@ A small project of architecture to avoid to start a project from the very beginn
 - [X] React Router
 - [X] React Hot Loader
 - [X] Webpack
+- [X] Webpack Dashboard
 - [X] Babel
 - [X] editorconfig
 - [X] eslint
@@ -15,6 +16,7 @@ A small project of architecture to avoid to start a project from the very beginn
 - [ ] Redux Thunk
 - [ ] Axios
 - [ ] Pre-commit
+- [X] Prettier
 - [ ] Mock API
 - [X] Mocha
 - [ ] Jest
