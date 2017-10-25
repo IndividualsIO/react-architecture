@@ -12,7 +12,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 
 const routerMiddle = routerMiddleware(history);
 
-const store = initialState =>
+const configureStore = initialState =>
 	createStore(
 		rootReducer,
 		initialState,
@@ -21,4 +21,4 @@ const store = initialState =>
 		)
 	);
 
-export default store;
+export default configureStore;

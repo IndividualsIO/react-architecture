@@ -8,9 +8,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="container-fluid">
-				<p>
-					Header {this.props.isFetching && 'loading...'}
-				</p>
+				<p>Header</p>
 				{routes}
 				{this.props.children}
 			</div>

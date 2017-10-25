@@ -14,13 +14,14 @@ A small project of architecture to avoid to start a project from the very beginn
 - [X] eslint
 - [X] Redux
 - [X] Redux Thunk
-- [ ] Axios
-- [ ] Pre-commit
+- [X] Pre-commit
 - [X] Prettier
-- [ ] Mock API
 - [X] Mocha
 - [ ] Jest
-- [ ] Docker
+- [X] Dev env
+- [X] Development Docker
+- [ ] Prod env
+- [ ] Production Docker
 
 
 

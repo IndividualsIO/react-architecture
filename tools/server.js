@@ -4,6 +4,7 @@ import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
 import config from '../webpack.config.dev';
+// import open from 'open';
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -26,6 +27,7 @@ app.listen(port, function(err) {
 	if (err) {
 		console.log(err);
 	} else {
+		//open(`http://localhost:${port}`);
 		console.log(`App is running at http://localhost:${port}`);
 	}
 });
