@@ -1,10 +1,9 @@
+/* eslint-disable no-console, no-unused-vars */
+
 import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
 import config from '../webpack.config.dev';
-// import open from 'open';
-
-/* eslint-disable no-console, no-unused-vars */
 
 const port = process.env.PORT || 3000;
 const app = express();
