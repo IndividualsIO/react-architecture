@@ -14,6 +14,7 @@ A small project of architecture to avoid to start a project from the very beginn
 - [X] eslint
 - [X] Redux
 - [X] Redux Thunk
+- [ ] Redux Forms
 - [X] Pre-commit
 - [X] Prettier
 - [X] Mocha
