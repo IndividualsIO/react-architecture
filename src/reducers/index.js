@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import ajax from './ajaxStatus';
+import ajax from './ajaxStatusReducer';
 
 const rootReducer = combineReducers({
 	ajax

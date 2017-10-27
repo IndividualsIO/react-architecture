@@ -1,4 +1,4 @@
-import { BEGIN_AJAX_CALL, AJAX_CALL_FAILURE } from './types';
+import { BEGIN_AJAX_CALL, AJAX_CALL_FAILURE } from './actionTypes';
 
 export function beginAjaxCall() {
 	return { type: BEGIN_AJAX_CALL };
