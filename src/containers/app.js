@@ -1,15 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
-import routes from '../routes';
+import Header from '../components/common/headerPage';
 
 class App extends React.Component {
+	componentDidCatch() {
+		//DO SOMETHING ( error ) = PARAM
+	}
+
 	render() {
 		return (
-			<div className="container-fluid">
-				<p>Header</p>
-				{routes}
+			<div>
+				{Header({
+					isFetching: this.props.isFetching
+				})}
+
 				{this.props.children}
 			</div>
 		);
@@ -23,7 +28,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = state => ({
-	isFetching: state.ajaxCallsInProgress > 0
+	isFetching: state.ajax.inProgress > 0
 });
 
 export default connect(mapStateToProps)(App);

@@ -12,10 +12,10 @@ export default {
 	resolve: {
 		extensions: ['*', '.js', '.jsx', '.json']
 	},
-	devtool: 'cheap-module-eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
+	devtool: 'cheap-module-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
 	entry: [
 		'react-hot-loader/patch',
-
+		'babel-polyfill',
 		'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
 		'webpack-hot-middleware/client?reload=true',
 		path.resolve(__dirname, 'src/index.js') // Defining path seems necessary for this to work consistently on Windows machines.\

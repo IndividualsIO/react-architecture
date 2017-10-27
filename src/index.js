@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 
+import routes from './routes';
 import history from './store/history';
 import configureStore from './store/configure';
 import App from './containers/app';
@@ -12,13 +13,16 @@ const store = configureStore();
 
 const render = Component => {
 	ReactDOM.render(
-		<AppContainer>
-			<Provider store={store}>
-				<Router history={history}>
-					<Component />
-				</Router>
-			</Provider>
-		</AppContainer>,
+		<Provider store={store}>
+			<ConnectedRouter history={history}>
+				<div>
+					<AppContainer warnings={false}>
+						<Component />
+					</AppContainer>
+					{routes}
+				</div>
+			</ConnectedRouter>
+		</Provider>,
 		document.getElementById('app')
 	);
 };

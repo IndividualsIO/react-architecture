@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import ajaxCallsInProgress from './ajaxStatus';
+import ajax from './ajaxStatus';
 
 const rootReducer = combineReducers({
-	ajaxCallsInProgress
+	ajax
 });
 
 export default rootReducer;

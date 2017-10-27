@@ -1,3 +1,6 @@
 export default {
-	ajaxCallsInProgress: 0
+	ajax: {
+		inProgress: 0,
+		error: {}
+	}
 };
