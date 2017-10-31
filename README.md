@@ -7,18 +7,19 @@ A small project of architecture to avoid to start a project from the very beginn
 - [X] React
 - [X] React Router
 - [X] React Hot Loader
-- [X] Webpack
+- [X] Webpack - dev
+- [ ] Webpack - prod
 - [X] Webpack Dashboard
 - [X] Babel
 - [X] editorconfig
 - [X] eslint
 - [X] Redux
 - [X] Redux Thunk
-- [ ] Redux Forms
+- [X] Redux Forms
 - [X] Pre-commit
 - [X] Prettier
 - [X] Mocha
-- [ ] Jest
+- [X] Expect
 - [X] Dev env
 - [X] Development Docker
 - [ ] Prod env
