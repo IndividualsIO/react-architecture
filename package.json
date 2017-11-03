@@ -59,6 +59,7 @@
     "babylon": "^6.18.0",
     "cheerio": "^1.0.0-rc.2",
     "colors": "^1.1.2",
+    "compression": "^1.7.1",
     "css-loader": "^0.28.7",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",

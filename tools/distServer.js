@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import open from 'open';
+//import open from 'open';
 import compression from 'compression';
 
 /*eslint-disable no-console, no-unused-vars */
@@ -19,6 +19,7 @@ app.listen(port, function(err) {
 	if (err) {
 		console.log(err);
 	} else {
-		open(`http://localhost:${port}`);
+		//open(`http://localhost:${port}`);
+		console.log(`App is running at http://localhost:${port}`);
 	}
 });
