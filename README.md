@@ -8,7 +8,7 @@ A small project of architecture to avoid to start a project from the very beginn
 - [X] React Router
 - [X] React Hot Loader
 - [X] Webpack - dev
-- [ ] Webpack - prod
+- [X] Webpack - prod
 - [X] Webpack Dashboard
 - [X] Babel
 - [X] editorconfig
@@ -25,7 +25,6 @@ A small project of architecture to avoid to start a project from the very beginn
 - [ ] redux-mock-store
 - [X] Dev env
 - [X] Development Docker
-- [ ] Prod env
 - [ ] Production Docker
 
 
