@@ -9,6 +9,8 @@ import history from './store/history';
 import configureStore from './store/configure';
 import App from './containers/app';
 
+import './styles/styles.css';
+
 const store = configureStore();
 
 const render = Component => {

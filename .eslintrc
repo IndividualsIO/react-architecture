@@ -1,11 +1,11 @@
 {
   "parser": "babel-eslint",
-	"extends": [
-			"eslint:recommended",
+    "extends": [
+            "eslint:recommended",
       "plugin:import/react",
-			"plugin:import/errors",
-			"plugin:import/warnings"
-	],
+            "plugin:import/errors",
+            "plugin:import/warnings"
+    ],
     "env": {
         "amd": true,
         "browser": true,
@@ -54,38 +54,43 @@
     ],
     "rules": {
         "arrow-body-style": ["error", "as-needed"],
+                "arrow-parens": ["error", "as-needed"],
         "async-await/space-after-async": 1,
         "async-await/space-after-await": 1,
+                "block-scoped-var": "error",
         "comma-dangle": 0,
         "constructor-super": "warn",
         "curly": "error",
+                "eqeqeq": "error",
         "import/no-unresolved": [2, {"commonjs": true, "amd": true}],
         "import/named": 2,
         "import/namespace": 2,
         "import/default": 2,
         "import/export": 2,
-        "indent": [1, "tab", {"SwitchCase": 2}],
+        "indent": [2, "tab", {"SwitchCase": 1}],
         "keyword-spacing": ["error", { "before": true }],
         "linebreak-style": ["error", "unix"],
         "max-len": [1, 120, 2, { "ignoreComments": true }],
         "no-const-assign": "warn",
         "no-cond-assign": [2, "except-parens"],
         "no-console": "error",
+                "no-else-return": "error",
+                "no-eq-null": "error",
         "no-this-before-super": "warn",
         "no-tabs": 0,
         "no-undef": "warn",
         "no-unreachable": "warn",
         "no-unused-vars": ["error", {
-        	"vars": "all",
-        	"args": "all",
-        	"ignoreRestSiblings": true,
-        	"varsIgnorePattern": "React"
-      	}],
+            "vars": "all",
+            "args": "all",
+            "ignoreRestSiblings": true,
+            "varsIgnorePattern": "React"
+        }],
         "no-underscore-dangle": 0,
         "one-var": ["error", "never"],
         "radix": 0,
         "react/jsx-uses-react": "error",
-    	"react/jsx-uses-vars": "error",
+            "react/jsx-uses-vars": "error",
         "react/jsx-indent": [2, "tab"],
         "react/jsx-indent-props": [2, "tab"],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -95,12 +100,11 @@
         "space-infix-ops": 0,
         "space-before-function-paren": ["error", {"anonymous": "never", "named": "never", "asyncArrow": "always"}],
         "valid-typeof": "warn",
-        // prettier
         "prettier/prettier": ["error", {
             "singleQuote": true,
             "trailingComma": "none",
             "bracketSpacing": true,
-            "jsxBracketSameLine": false,
+            "jsxBracketSameLine": true,
             "parser": "babylon",
             "useTabs": true,
             "tabWidth": 2
