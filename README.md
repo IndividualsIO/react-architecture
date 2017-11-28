@@ -26,6 +26,7 @@ A small project of architecture to avoid to start a project from the very beginn
 - [X] Dev env
 - [X] Development Docker
 - [ ] Production Docker
-
+- [X] Plop
+- [ ] Plop generators
 
 
