@@ -68,7 +68,7 @@
         "import/namespace": 2,
         "import/default": 2,
         "import/export": 2,
-        "indent": [2, "tab", {"SwitchCase": 2}],
+        "indent": [2, "tab", {"SwitchCase": 1}],
         "keyword-spacing": ["error", { "before": true }],
         "linebreak-style": ["error", "unix"],
         "max-len": [1, 120, 2, { "ignoreComments": true, "ignoreUrls": true, "ignoreTemplateLiterals": true }],
