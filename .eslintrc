@@ -1,10 +1,10 @@
 {
-  "parser": "babel-eslint",
+    "parser": "babel-eslint",
     "extends": [
-            "eslint:recommended",
-      "plugin:import/react",
-            "plugin:import/errors",
-            "plugin:import/warnings"
+        "eslint:recommended",
+        "plugin:import/react",
+        "plugin:import/errors",
+        "plugin:import/warnings"
     ],
     "env": {
         "amd": true,
@@ -19,7 +19,7 @@
         "jest": true,
         "mongo": true
     },
-    "parserOptions":{
+    "parserOptions": {
         "ecmaVersion": 8,
         "sourceType": "module",
         "ecmaFeatures": {
@@ -38,9 +38,9 @@
             }
         },
         "import/resolver": {
-          "node": {
-            "extensions": [".js",".jsx"]
-          }
+            "node": {
+                "extensions": [".js", ".jsx"]
+            }
         }
     },
     "plugins": [
@@ -54,44 +54,56 @@
     ],
     "rules": {
         "arrow-body-style": ["error", "as-needed"],
-                "arrow-parens": ["error", "as-needed"],
+        "arrow-parens": ["error", "as-needed"],
         "async-await/space-after-async": 1,
         "async-await/space-after-await": 1,
-                "block-scoped-var": "error",
+        "block-scoped-var": "error",
         "comma-dangle": 0,
         "constructor-super": "warn",
-                "curly": "error",
-                "eol-last": ["error", "always"],
-                "eqeqeq": "error",
-        "import/no-unresolved": [2, {"commonjs": true, "amd": true}],
+        "curly": "error",
+        "eol-last": ["error", "always"],
+        "eqeqeq": "error",
+        "import/no-unresolved": [2, { "commonjs": true, "amd": true }],
         "import/named": 2,
         "import/namespace": 2,
         "import/default": 2,
         "import/export": 2,
-        "indent": [2, "tab", {"SwitchCase": 1}],
+        "indent": [2, "tab", { "SwitchCase": 1 }],
         "keyword-spacing": ["error", { "before": true }],
         "linebreak-style": ["error", "unix"],
-        "max-len": [1, 120, 2, { "ignoreComments": true, "ignoreUrls": true, "ignoreTemplateLiterals": true }],
+        "max-len": [
+            1,
+            120,
+            2,
+            {
+                "ignoreComments": true,
+                "ignoreUrls": true,
+                "ignoreTemplateLiterals": true
+            }
+        ],
         "no-const-assign": "warn",
         "no-cond-assign": [2, "except-parens"],
         "no-console": "error",
-                "no-else-return": "error",
-                "no-eq-null": "error",
+        "no-else-return": "error",
+        "no-eq-null": "error",
         "no-this-before-super": "warn",
-                "no-trailing-spaces": "error",
+        "no-trailing-spaces": ["error", { "skipBlankLines": true }],
         "no-undef": "warn",
         "no-unreachable": "warn",
-        "no-unused-vars": ["error", {
-            "vars": "all",
-            "args": "all",
-            "ignoreRestSiblings": true,
-            "varsIgnorePattern": "React"
-        }],
+        "no-unused-vars": [
+            "error",
+            {
+                "vars": "all",
+                "args": "all",
+                "ignoreRestSiblings": true,
+                "varsIgnorePattern": "React"
+            }
+        ],
         "no-underscore-dangle": 0,
         "one-var": ["error", "never"],
         "radix": 0,
         "react/jsx-uses-react": "error",
-            "react/jsx-uses-vars": "error",
+        "react/jsx-uses-vars": "error",
         "react/jsx-indent": [2, "tab"],
         "react/jsx-indent-props": [2, "tab"],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -99,16 +111,23 @@
         "quote-props": [1, "consistent-as-needed"],
         "semi": ["error", "always"],
         "space-infix-ops": 0,
-        "space-before-function-paren": ["error", {"anonymous": "never", "named": "never", "asyncArrow": "always"}],
+        "space-before-function-paren": [
+            "error",
+            { "anonymous": "never", "named": "never", "asyncArrow": "always" }
+        ],
         "valid-typeof": "warn",
-        "prettier/prettier": ["error", {
-            "singleQuote": true,
-            "trailingComma": "none",
-            "bracketSpacing": true,
-            "jsxBracketSameLine": true,
-            "parser": "babylon",
-            "useTabs": true,
-            "tabWidth": 2
-        }]
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true,
+                "trailingComma": "all",
+                "bracketSpacing": true,
+                "jsxBracketSameLine": true,
+                "parser": "babylon",
+                "useTabs": true,
+                "tabWidth": 2,
+                "semi": true
+            }
+        ]
     }
 }
