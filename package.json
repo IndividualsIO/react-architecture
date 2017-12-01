@@ -1,5 +1,5 @@
 {
-  "name": "beaver-staff",
+  "name": "react-architecture",
   "version": "1.0.0",
   "descriptiocn": "A small project of architecture to avoid to start a project from the very beginning using React + Redux in a simple way.",
   "author": "Carlos Abdalla",
@@ -23,11 +23,11 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "eslint --fix",
+      "node_modules/.bin/esw webpack.config.* src tools --fix",
       "git add"
     ],
     "*.css": [
-      "prettier --write",
+      "node_modules/.bin/prettier --write",
       "git add"
     ]
   },
