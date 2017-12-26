@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../components/common/headerPage';
+import routes from '../routes';
 
 class App extends React.Component {
 	componentDidCatch() {
@@ -14,8 +15,7 @@ class App extends React.Component {
 				{Header({
 					isFetching: this.props.isFetching
 				})}
-
-				{this.props.children}
+				{routes}
 			</div>
 		);
 	}

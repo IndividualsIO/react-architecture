@@ -4,7 +4,6 @@ import { ConnectedRouter } from 'react-router-redux';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 
-import routes from './routes';
 import history from './store/history';
 import configureStore from './store/configure';
 import App from './containers/app';
@@ -21,7 +20,6 @@ const render = Component => {
 					<AppContainer warnings={false}>
 						<Component />
 					</AppContainer>
-					{routes}
 				</div>
 			</ConnectedRouter>
 		</Provider>,
