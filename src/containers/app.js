@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Header from '../components/common/headerPage';
+import { ConnectedRouter } from 'react-router-redux';
+
+import history from '../store/history';
+import Header from '../components/common/header';
 import routes from '../routes';
 
 class App extends React.Component {
@@ -12,10 +15,14 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				{Header({
-					isFetching: this.props.isFetching
-				})}
-				{routes}
+				<ConnectedRouter history={history}>
+					<div>
+						{Header({
+							isFetching: this.props.isFetching
+						})}
+						{routes}
+					</div>
+				</ConnectedRouter>
 			</div>
 		);
 	}
@@ -23,7 +30,6 @@ class App extends React.Component {
 
 // Validation
 App.propTypes = {
-	children: PropTypes.element,
 	isFetching: PropTypes.bool.isRequired
 };
 
