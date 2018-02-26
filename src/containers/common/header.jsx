@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Loader from './loader';
+import Loader from '../../components/common/loader';
 
 const spinner = {
 	color: '#000',

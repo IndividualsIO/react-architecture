@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 
 import history from '../store/history';
-import Header from '../components/common/header';
+import Header from './common/header';
 import routes from '../routes';
 
 class App extends React.Component {
