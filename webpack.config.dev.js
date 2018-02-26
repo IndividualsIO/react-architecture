@@ -1,6 +1,5 @@
 import webpack from 'webpack';
 import path from 'path';
-import DashboardPlugin from 'webpack-dashboard/plugin';
 import autoprefixer from 'autoprefixer';
 
 import fs from 'fs';
@@ -9,6 +8,7 @@ const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 export default {
+	mode: 'development',
 	resolve: {
 		extensions: ['*', '.js', '.jsx', '.json']
 	},
@@ -33,8 +33,7 @@ export default {
 	plugins: [
 		new webpack.NamedModulesPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoEmitOnErrorsPlugin(),
-		new DashboardPlugin()
+		new webpack.NoEmitOnErrorsPlugin()
 	],
 	module: {
 		strictExportPresence: true,
@@ -67,7 +66,8 @@ export default {
 							// This is a feature of `babel-loader` for webpack (not Babel itself).
 							// It enables caching results in ./node_modules/.cache/babel-loader/
 							// directory for faster rebuilds.
-							cacheDirectory: true
+							cacheDirectory: true,
+							plugins: ['react-hot-loader/babel']
 						}
 					},
 					// "postcss" loader applies autoprefixer to our CSS.

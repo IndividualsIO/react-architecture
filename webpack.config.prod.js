@@ -21,6 +21,7 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
 	: {};
 
 export default {
+	mode: 'production',
 	resolve: {
 		extensions: ['*', '.js', '.jsx', '.json']
 	},
@@ -39,7 +40,7 @@ export default {
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.DefinePlugin(GLOBALS),
 		new ExtractTextPlugin('/static/styles.css'),
-		new webpack.optimize.UglifyJsPlugin()
+		new webpack.LoaderOptionsPlugin({ minimize: true })
 	],
 	module: {
 		strictExportPresence: true,
