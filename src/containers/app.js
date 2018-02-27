@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { hot } from 'react-hot-loader';
 import { ConnectedRouter } from 'react-router-redux';
 
 import history from '../store/history';
@@ -37,4 +38,4 @@ const mapStateToProps = state => ({
 	isFetching: state.ajax.inProgress > 0
 });
 
-export default connect(mapStateToProps)(App);
+export default hot(module)(connect(mapStateToProps)(App));
