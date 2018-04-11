@@ -1,0 +1,27 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+{{#if connectedComponent}}
+import { connect } from 'react-redux';
+{{/if}}
+
+class {{ properCase name }} extends Component {
+	render() {
+		return <div />;
+	}
+}
+
+{{ properCase name }}.propTypes = {
+//myProp: PropTypes.object.isRequired
+};
+
+{{#if connectedComponent}}
+const mapStateToProps = (state, ownProps) => ({
+	state: state
+});
+
+const mapActionToProps = {};
+
+export default connect(mapStateToProps, mapActionToProps)({{ properCase name }});
+{{else}}
+export default {{ properCase name }};
+{{/if}}

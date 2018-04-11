@@ -27,6 +27,6 @@ A small project of architecture to avoid to start a project from the very beginn
 - [X] Development Docker
 - [ ] Production Docker
 - [X] Plop
-- [ ] Plop generators
+- [X] Plop generators
 - [X] CSS-Modules
 
