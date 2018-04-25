@@ -33,6 +33,13 @@ or
 > yearn begin
 ```
 
+Using Docker
+
+```zsh
+> docker-compose up
+```
+
+
 # How To Create
 ## Components
 Components are small pieces of the project re-usable and didn't manage state, only accept props.
