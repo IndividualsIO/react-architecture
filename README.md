@@ -2,6 +2,65 @@
 
 A small project of architecture to avoid to start a project from the very beginning using React + Redux in a simple way.
 
+# Start
+
+```zsh
+> git clone https://github.com/abdalla/react-architecture.git project_name
+
+> cd project_name
+
+> sh ./tools/scripts/start.sh
+```
+
+# Run
+
+Using NPM
+```zsh
+> npm start
+
+or
+
+> npm begin
+```
+
+Using Yarn
+
+```zsh
+> yarn start
+
+or
+
+> yearn begin
+```
+
+# How To Create
+## Components
+Components are small pieces of the project re-usable and didn't manage state, only accept props.
+Exceptions should be discussed.
+
+```zsh
+> plop component
+```
+
+## Containers
+Containers are your page, it manages the state and uses the components to compose the page.
+
+```zsh
+> plop container
+```
+
+
+## Actions
+```zsh
+> plop action
+```
+
+## Reducers
+```zsh
+> plop reducer
+```
+
+
 ## What you'll find
 
 - [X] React
@@ -21,12 +80,12 @@ A small project of architecture to avoid to start a project from the very beginn
 - [X] Mocha
 - [X] Expect
 - [X] Enzyme
-- [ ] Nock
-- [ ] redux-mock-store
+- [X] CSS-Modules
 - [X] Dev env
 - [X] Development Docker
-- [ ] Production Docker
 - [X] Plop
 - [X] Plop generators
-- [X] CSS-Modules
+- [ ] Nock
+- [ ] redux-mock-store
+- [ ] Production Docker
 
