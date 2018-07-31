@@ -65,5 +65,5 @@ typings/
 .yarn-integrity
 
 .env
-
+yarn.lock
 
