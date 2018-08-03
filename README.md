@@ -1,6 +1,6 @@
 # react-architecture
 
-A small project of architecture to avoid to start a project from the very beginning using React + Redux in a simple way.
+A solid starting point for both professionals and newcomers to the industry.
 
 # Start
 
