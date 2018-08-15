@@ -1,7 +1,7 @@
 // This script copies src/index.html into /dist/index.html
 // This is a good example of using Node and cheerio to do a simple file transformation.
 // In this case, the transformation is useful since we only use a separate css file in prod.
-/*eslint-disable no-console, no-unused-vars */
+/*eslint-disable no-console */
 
 import fs from 'fs';
 import cheerio from 'cheerio';
@@ -21,6 +21,6 @@ fs.readFile('src/index.html', 'utf8', (err, markup) => {
 		if (err) {
 			return console.log(err);
 		}
-		console.log('index.html written to /dist'.green);
+		console.log(colors.magenta('index.html written to /dist'));
 	});
 });

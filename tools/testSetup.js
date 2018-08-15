@@ -43,9 +43,16 @@ var jsdom = require('jsdom');
 var exposedProperties = ['window', 'navigator', 'document'];
 
 const { JSDOM } = jsdom;
-const { document } = new JSDOM(
-	'<!doctype html><html><body></body></html>'
-).window;
+const { document } = new JSDOM('<!doctype html><html><body></body></html>', {
+	url: 'https://example.org/',
+	referrer: 'https://example.com/',
+	contentType: 'text/html',
+	includeNodeLocations: true,
+	storageQuota: 10000000
+}).window;
+
+// document.location.href === "http://localhost/";
+
 global.document = document;
 global.window = document.defaultView;
 Object.keys(document.defaultView).forEach(property => {

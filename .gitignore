@@ -67,3 +67,4 @@ typings/
 .env
 yarn.lock
 
+.vscode/
