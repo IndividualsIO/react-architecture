@@ -1,11 +1,18 @@
 import webpack from 'webpack';
 import path from 'path';
 import autoprefixer from 'autoprefixer';
-
+import dotenv from 'dotenv';
 import fs from 'fs';
 
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+
+const env = dotenv.config().parsed;
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+	prev[`process.env.${next}`] = JSON.stringify(env[next]);
+	return prev;
+}, {});
 
 export default {
 	mode: 'development',
@@ -33,7 +40,8 @@ export default {
 	plugins: [
 		new webpack.NamedModulesPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoEmitOnErrorsPlugin()
+		new webpack.NoEmitOnErrorsPlugin(),
+		new webpack.DefinePlugin(envKeys)
 	],
 	module: {
 		strictExportPresence: true,

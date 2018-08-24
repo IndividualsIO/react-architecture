@@ -1,11 +1,10 @@
 /* eslint-disable no-console, no-unused-vars */
-
 import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
 import config from '../webpack.config.dev';
-// import open from 'open';
 import DashboardPlugin from 'webpack-dashboard/plugin';
+require('dotenv').config();
 
 const port = process.env.PORT || 3000;
 const app = express();

@@ -2,9 +2,9 @@ import express from 'express';
 import path from 'path';
 //import open from 'open';
 import compression from 'compression';
+// require('dotenv').config();
 
 /*eslint-disable no-console, no-unused-vars */
-
 const port = process.env.PORT || 3000;
 const app = express();
 
