@@ -1,0 +1,44 @@
+import initialState from './initialState';
+import Immutable from 'immutable';
+import {
+	GET_ALL_{{ constantCase name }}S_SUCCESS,
+	GET_{{ constantCase name }}_SUCCESS,
+	DELETE_{{ constantCase name }}_SUCCESS,
+	SAVE_{{ constantCase name }}_SUCCESS
+} from './actionTypes';
+
+const {{properCase name}}Reducer = (state = initialState.{{camelCase}}, action) => {
+	switch (action.type) {
+		case GET_ALL_{{ constantCase name }}S_SUCCESS: {
+			return {
+				...state,
+				list: action.payload
+			};
+		}
+		case GET_{{ constantCase name }}_SUCCESS: {
+			return {
+				...state,
+				inEdit: action.payload
+			};
+		}
+
+		case DELETE_{{ constantCase name }}_SUCCESS: {
+			return {
+				...state,
+				inEdit: {}
+			};
+		}
+
+		case SAVE_{{ constantCase name }}_SUCCESS: {
+			return {
+				...state,
+				inEdit: {}
+			};
+		}
+
+		default:
+			return state;
+	}
+};
+
+export default {{properCase name}}Reducer;

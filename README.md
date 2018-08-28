@@ -67,6 +67,11 @@ Containers are your page, it manages the state and uses the components to compos
 > plop reducer
 ```
 
+## API
+```zsh
+> plop api
+```
+
 
 ## What you'll find
 

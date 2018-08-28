@@ -1,0 +1,85 @@
+import { ajaxFailure, beginAjaxCall } from './ajaxStatusAction';
+import toastr from 'toastr';
+import api from '../api/{{ camelCase name }}Api';
+import {
+	GET_ALL_{{ constantCase name }}S_SUCCESS,
+	GET_{{ constantCase name }}_SUCCESS,
+	DELETE_{{ constantCase name }}_SUCCESS,
+	SAVE_{{ constantCase name }}_SUCCESS
+} from './actionTypes';
+
+const getAll{{properCase name}}sSuccess = data => ({
+	type: GET_ALL_{{constantCase name}}S_SUCCESS,
+	payload: data
+});
+
+export const get{{properCase name}}s = () => async dispatch => {
+	dispatch(beginAjaxCall());
+
+	try {
+		const result = await api.get{{properCase name}}s();
+
+		dispatch(getAll{{properCase name}}sSuccess(result.data));
+	} catch (error) {
+		dispatch(ajaxFailure(error.response));
+		toastr.error(error.response.data.message);
+	}
+};
+
+const get{{properCase name}}Success = data => ({
+	type: GET_{{constantCase name}}_SUCCESS,
+	payload: data
+});
+
+export const get{{properCase name}} = id => async dispatch => {
+	dispatch(beginAjaxCall());
+
+	try {
+		const {{properCase name}} = await api.get{{properCase name}}(id);
+
+		dispatch(get{{properCase name}}Success({{properCase name}}.data));
+	} catch (error) {
+		dispatch(ajaxFailure(error.response));
+		toastr.error(error.response.data.message);
+	}
+};
+
+
+const delete{{properCase name}}Success = () => ({
+	type: DELETE_{{constantCase name}}_SUCCESS
+});
+
+export const delete{{properCase name}} = id => async dispatch => {
+	dispatch(beginAjaxCall());
+
+	try {
+		await api.delete{{properCase name}}(id);
+		await dispatch(delete{{properCase name}}Success());
+
+		toastr.success('Removido com sucesso.');
+		return true;
+	} catch (error) {
+		dispatch(ajaxFailure(error.response));
+		//toastr.error(error.response.data.message);
+		return false;
+	}
+};
+
+const save{{properCase name}}Success = data => ({
+	type: SAVE_{{constantCase name}}_SUCCESS,
+	payload: data
+});
+
+export const save{{properCase name}} = {{properCase name}} => async dispatch => {
+	dispatch(beginAjaxCall());
+	try {
+		const saved{{properCase name}} = await api.save{{properCase name}}({{properCase name}});
+
+		dispatch(save{{properCase name}}Success(saved{{properCase name}}.data));
+		return true;
+	} catch (error) {
+		dispatch(ajaxFailure(error.response));
+		toastr.error(error.response.data.message);
+		return false;
+	}
+};

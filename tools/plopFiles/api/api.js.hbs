@@ -1,0 +1,48 @@
+import camelcaseKeysDeep from 'camelcase-keys-deep';
+// import decamelizeKeysDeep from 'decamelize-keys-deep';
+
+import { ApiFactory } from './factoryApi';
+const instance = ApiFactory();
+
+const get{{ properCase name }}s = async () => {
+	const response = await instance.get('/api/CHANGEME');
+
+	return camelcaseKeysDeep(response);
+};
+
+const get{{ properCase name }} = async id => {
+	const response = await instance.get(`/api/CHANGEME/${id}`);
+	return camelcaseKeysDeep(response);
+};
+
+const save{{ properCase name }} = async item => {
+	instance.defaults.headers.common['Content-Type'] = 'application/json';
+	const new{{ properCase name }} = {
+		value1: item.towerId,
+		value2: 1, //TODO: UPDATE THIS VALUES
+		value3: item.title
+	};
+
+	let response;
+
+	if (item.id) {
+		response = await instance.put(`/api/CHANGEME/${item.id}`, newUnit);
+		return camelcaseKeysDeep(response);
+	}
+
+	response = await instance.post('/api/CHANGEME', newUnit);
+	return camelcaseKeysDeep(response);
+};
+
+const delete{{ properCase name }} = async id => {
+	const response = await instance.delete(`/api/CHANGEME/${id}`);
+
+	return camelcaseKeysDeep(response);
+};
+
+export default {
+	get{{ properCase name }}s,
+	get{{ properCase name }},
+	save{{ properCase name }},
+	delete{{ properCase name }}
+};
