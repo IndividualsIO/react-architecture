@@ -35,7 +35,6 @@
 	"dependencies": {
 		"axios": "^0.18.0",
 		"domkit": "^0.0.1",
-		"dotenv": "6.0.0",
 		"history": "^4.7.2",
 		"prop-types": "15.6.2",
 		"react": "^16.3.1",
@@ -65,6 +64,7 @@
 		"colors": "^1.2.1",
 		"compression": "^1.7.2",
 		"css-loader": "1.0.0",
+		"dotenv": "6.0.0",
 		"enzyme": "^3.3.0",
 		"enzyme-adapter-react-16": "^1.1.1",
 		"eslint": "5.3.0",
