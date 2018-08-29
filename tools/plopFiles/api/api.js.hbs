@@ -26,11 +26,11 @@ const save{{ properCase name }} = async item => {
 	let response;
 
 	if (item.id) {
-		response = await instance.put(`/api/CHANGEME/${item.id}`, newUnit);
+		response = await instance.put(`/api/CHANGEME/${item.id}`, new{{ properCase name }});
 		return camelcaseKeysDeep(response);
 	}
 
-	response = await instance.post('/api/CHANGEME', newUnit);
+	response = await instance.post('/api/CHANGEME', new{{ properCase name }});
 	return camelcaseKeysDeep(response);
 };
 
