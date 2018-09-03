@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import path from 'path';
-import autoprefixer from 'autoprefixer';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import fs from 'fs';
 
 const GLOBALS = {
@@ -10,15 +10,6 @@ const GLOBALS = {
 
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
-const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
-const cssFilename = 'static/css/[name].[contenthash:8].css';
-
-const publicPath = './';
-
-const shouldUseRelativeAssetPaths = publicPath === './';
-const extractTextPluginOptions = shouldUseRelativeAssetPaths
-	? { publicPath: Array(cssFilename.split('/').length).join('../') }
-	: {};
 
 export default {
 	mode: 'production',
@@ -39,8 +30,14 @@ export default {
 	plugins: [
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.DefinePlugin(GLOBALS),
-		new ExtractTextPlugin('/static/styles.css'),
-		new webpack.LoaderOptionsPlugin({ minimize: true })
+		new ExtractTextPlugin('/static/styles.scss'),
+		new webpack.LoaderOptionsPlugin({ minimize: true }),
+		new MiniCssExtractPlugin({
+			// Options similar to the same options in webpackOptions.output
+			// both options are optional
+			filename: '/static/[name].css',
+			chunkFilename: '/static/[id].css'
+		})
 	],
 	module: {
 		strictExportPresence: true,
@@ -76,51 +73,14 @@ export default {
 							cacheDirectory: true
 						}
 					},
-					// "postcss" loader applies autoprefixer to our CSS.
-					// "css" loader resolves paths in CSS and adds assets as dependencies.
-					// "style" loader turns CSS into JS modules that inject <style> tags.
-					// In production, we use a plugin to extract that CSS to a file, but
-					// in development "style" loader enables hot editing of CSS.
 					{
-						test: /\.css$/,
-						loader: ExtractTextPlugin.extract(
-							Object.assign(
-								{
-									fallback: require.resolve('style-loader'),
-									use: [
-										{
-											loader: require.resolve('css-loader'),
-											options: {
-												importLoaders: 1,
-												minimize: true,
-												sourceMap: shouldUseSourceMap
-											}
-										},
-										{
-											loader: require.resolve('postcss-loader'),
-											options: {
-												// Necessary for external CSS imports to work
-												// https://github.com/facebookincubator/create-react-app/issues/2677
-												ident: 'postcss',
-												plugins: () => [
-													require('postcss-flexbugs-fixes'),
-													autoprefixer({
-														browsers: [
-															'>1%',
-															'last 4 versions',
-															'Firefox ESR',
-															'not ie < 9' // React doesn't support IE8 anyway
-														],
-														flexbox: 'no-2009'
-													})
-												]
-											}
-										}
-									]
-								},
-								extractTextPluginOptions
-							)
-						)
+						test: /\.(css|scss)$/,
+						use: [
+							// fallback to style-loader in development
+							MiniCssExtractPlugin.loader,
+							'css-loader',
+							'sass-loader'
+						]
 					},
 					// "file" loader makes sure those assets get served by WebpackDevServer.
 					// When you `import` an asset, you get its (virtual) filename.
