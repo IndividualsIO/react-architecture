@@ -8,6 +8,8 @@ import history from '../store/history';
 import Header from './common/header';
 import routes from '../routes';
 
+import '../styles/styles.css';
+
 class App extends React.Component {
 	componentDidCatch() {
 		//DO SOMETHING ( error ) = PARAM
@@ -22,6 +24,9 @@ class App extends React.Component {
 							isFetching: this.props.isFetching
 						})}
 						{routes}
+						<div style={{ minHeight: '500px' }} className="test">
+							testM
+						</div>
 					</div>
 				</ConnectedRouter>
 			</div>
