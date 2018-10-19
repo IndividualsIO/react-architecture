@@ -33,6 +33,12 @@ module.exports = {
 			name: 'wantReducer',
 			default: true,
 			message: 'Do you want to add a reducer?'
+		},
+		{
+			type: 'confirm',
+			name: 'wantInitialState',
+			default: true,
+			message: 'Do you want to add a initial state to your reducer?'
 		}
 	],
 	actions: data => {
@@ -58,7 +64,7 @@ module.exports = {
 				// 	'src/actions/{{camelCase name}}Actions.js'
 				// ),
 				path: 'src/actions/actionTypes.js',
-				pattern: /(-- APPEND ITEMS HERE --)/gi,
+				pattern: /(\/\/-- APPEND ITEMS HERE --)/gi,
 				templateFile: actionTypeTemplate
 			});
 		}
@@ -86,6 +92,22 @@ module.exports = {
 				// ),
 				path: 'src/reducers/{{camelCase name}}Reducer.js',
 				templateFile: reducerTemplate,
+				abortOnFail: true
+			});
+		}
+
+		if (data.wantInitialState) {
+			const initialStateTemplate = path.resolve(__dirname, 'reducerInitialState.js.hbs');
+
+			actions.push({
+				type: 'modify',
+				// path: path.resolve(
+				// 	process.cwd(),
+				// 	'src/reducers/InitialState.js'
+				// ),
+				path: 'src/reducers/InitialState.js',
+				pattern: /(\/\/-- APPEND ITEMS HERE --)/gi,
+				templateFile: initialStateTemplate,
 				abortOnFail: true
 			});
 		}
