@@ -64,7 +64,7 @@ module.exports = {
 				// 	'src/actions/{{camelCase name}}Actions.js'
 				// ),
 				path: 'src/actions/actionTypes.js',
-				pattern: /(-- APPEND ITEMS HERE --)/gi,
+				pattern: /(\/\/-- APPEND ITEMS HERE --)/gi,
 				templateFile: actionTypeTemplate
 			});
 		}
@@ -106,6 +106,7 @@ module.exports = {
 				// 	'src/reducers/InitialState.js'
 				// ),
 				path: 'src/reducers/InitialState.js',
+				pattern: /(\/\/-- APPEND ITEMS HERE --)/gi,
 				templateFile: initialStateTemplate,
 				abortOnFail: true
 			});
