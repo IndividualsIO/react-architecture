@@ -97,7 +97,10 @@ module.exports = {
 		}
 
 		if (data.wantInitialState) {
-			const initialStateTemplate = path.resolve(__dirname, 'reducerInitialState.js.hbs');
+			const initialStateTemplate = path.resolve(
+				__dirname,
+				'reducerInitialState.js.hbs'
+			);
 
 			actions.push({
 				type: 'modify',

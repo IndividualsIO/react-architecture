@@ -1,5 +1,5 @@
 import express from 'express';
-import path from 'path';
+// import path from 'path';
 //import open from 'open';
 import compression from 'compression';
 // require('dotenv').config();
@@ -12,7 +12,7 @@ app.use(compression());
 app.use(express.static('dist'));
 
 app.get('*', function(req, res) {
-	res.sendFile(path.join(__dirname, './dist/index.html'));
+	res.sendFile('index.html');
 });
 
 app.listen(port, function(err) {
