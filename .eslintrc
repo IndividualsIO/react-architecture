@@ -115,19 +115,6 @@
             "error",
             { "anonymous": "never", "named": "never", "asyncArrow": "always" }
         ],
-        "valid-typeof": "warn",
-        "prettier/prettier": [
-            "error",
-            {
-                "singleQuote": true,
-                "trailingComma": "none",
-                "bracketSpacing": true,
-                "jsxBracketSameLine": true,
-                "parser": "babylon",
-                "useTabs": true,
-                "tabWidth": 2,
-                "semi": true
-            }
-        ]
+        "valid-typeof": "warn"
     }
 }

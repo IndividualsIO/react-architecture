@@ -31,10 +31,7 @@
 			"node_modules/.bin/esw webpack.config.* src tools --fix",
 			"git add"
 		],
-		"*.css": [
-			"node_modules/.bin/prettier --write",
-			"git add"
-		]
+		"*.{css,js,jsx,json,md}": ["node_modules/.bin/prettier --write", "git add"]
 	},
 	"dependencies": {
 		"axios": "^0.18.0",
