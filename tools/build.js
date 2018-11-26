@@ -3,9 +3,24 @@
 /*eslint-disable no-console, no-unused-vars*/
 import webpack from 'webpack';
 import webpackConfig from '../webpack.config.prod';
+import fs from 'fs';
+import path from 'path';
 import colors from 'colors';
 
 process.env.NODE_ENV = 'production'; // this assures the Babel dev config (for hot reloading) doesn't apply.
+
+//Copy server file to Dist
+//-------------------------
+console.log(
+	'Copying distServer to /dist/server.js'.blue //eslint-disable-line quotes
+);
+
+const srctFilename = 'distServer.js';
+const src = path.join(__dirname, srctFilename);
+const destDir = path.join('dist/server.js');
+
+fs.copyFileSync(src, destDir);
+//-------------------------
 
 console.log(
 	'Generating minified bundle for production via Webpack. This will take a moment...'
