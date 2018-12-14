@@ -19,7 +19,7 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 export default merge(baseConfig, {
 	mode: 'production',
-	devtool: 'source-map',
+	// devtool: 'source-map',
 	entry: ['@babel/polyfill', path.resolve(__dirname, 'src/index.js')],
 	devServer: {
 		contentBase: path.resolve(__dirname, 'dist')
