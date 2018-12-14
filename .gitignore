@@ -65,6 +65,7 @@ typings/
 .yarn-integrity
 
 .env
+prod.env
 yarn.lock
 
 .vscode/

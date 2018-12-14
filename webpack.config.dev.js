@@ -1,8 +1,10 @@
 import webpack from 'webpack';
+import merge from 'webpack-merge';
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 import dotenv from 'dotenv';
 import fs from 'fs';
+import baseConfig from './webpack.config.base';
 
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
@@ -14,11 +16,8 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
 	return prev;
 }, {});
 
-export default {
+export default merge(baseConfig, {
 	mode: 'development',
-	resolve: {
-		extensions: ['*', '.js', '.jsx', '.json']
-	},
 	devtool: 'cheap-module-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
 	entry: [
 		'react-hot-loader/patch',
@@ -27,12 +26,6 @@ export default {
 		'webpack-hot-middleware/client?reload=true',
 		path.resolve(__dirname, 'src/index.js') // Defining path seems necessary for this to work consistently on Windows machines.\
 	],
-	target: 'web',
-	output: {
-		path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
-		publicPath: '/',
-		filename: 'bundle.js'
-	},
 	devServer: {
 		contentBase: path.resolve(__dirname, 'src'),
 		hot: true
@@ -150,4 +143,4 @@ export default {
 			}
 		]
 	}
-};
+});

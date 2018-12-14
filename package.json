@@ -125,6 +125,7 @@
 		"webpack-dashboard": "2.0.0",
 		"webpack-dev-middleware": "3.4.0",
 		"webpack-dev-server": "3.1.10",
-		"webpack-hot-middleware": "2.24.3"
+		"webpack-hot-middleware": "2.24.3",
+		"webpack-merge": "4.1.5"
 	}
 }

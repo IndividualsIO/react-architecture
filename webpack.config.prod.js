@@ -1,35 +1,32 @@
 import webpack from 'webpack';
+import merge from 'webpack-merge';
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import fs from 'fs';
+import dotenv from 'dotenv';
+import baseConfig from './webpack.config.base';
 
-const GLOBALS = {
-	'process.env.NODE_ENV': JSON.stringify('production')
-};
+const env = dotenv.config({ path: './prod.env' }).parsed;
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+	prev[`process.env.${next}`] = JSON.stringify(env[next]);
+	return prev;
+}, {});
 
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
-export default {
+export default merge(baseConfig, {
 	mode: 'production',
-	resolve: {
-		extensions: ['*', '.js', '.jsx', '.json']
-	},
 	devtool: 'source-map',
 	entry: ['@babel/polyfill', path.resolve(__dirname, 'src/index.js')],
-	target: 'web',
-	output: {
-		path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
-		publicPath: '/',
-		filename: 'bundle.js'
-	},
 	devServer: {
 		contentBase: path.resolve(__dirname, 'dist')
 	},
 	plugins: [
 		new webpack.optimize.OccurrenceOrderPlugin(),
-		new webpack.DefinePlugin(GLOBALS),
+		new webpack.DefinePlugin(envKeys),
 		new ExtractTextPlugin('/static/styles.scss'),
 		new webpack.LoaderOptionsPlugin({ minimize: true }),
 		new MiniCssExtractPlugin({
@@ -102,4 +99,4 @@ export default {
 			}
 		]
 	}
-};
+});
