@@ -20,7 +20,7 @@ export default merge(baseConfig, {
 	mode: 'development',
 	devtool: 'cheap-module-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
 	entry: [
-		'react-hot-loader/patch',
+		'react-hot-loader/patch', //'react-hot-loader/babel',
 		'@babel/polyfill',
 		'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
 		'webpack-hot-middleware/client?reload=true',
