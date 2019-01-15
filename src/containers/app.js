@@ -2,9 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
-import { ConnectedRouter } from 'react-router-redux';
-
-import history from '../store/history';
 import Header from './common/header';
 import routes from '../routes';
 
@@ -16,14 +13,10 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<ConnectedRouter history={history}>
-					<div>
-						{Header({
-							isFetching: this.props.isFetching
-						})}
-						{routes}
-					</div>
-				</ConnectedRouter>
+				{Header({
+					isFetching: this.props.isFetching
+				})}
+				{routes}
 			</div>
 		);
 	}

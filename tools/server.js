@@ -3,14 +3,14 @@ import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
 import config from '../webpack.config.dev';
-import DashboardPlugin from 'webpack-dashboard/plugin';
+// import DashboardPlugin from 'webpack-dashboard/plugin';
 require('dotenv').config();
 
 const port = process.env.PORT || 3000;
 const app = express();
 const compiler = webpack(config);
 
-compiler.apply(new DashboardPlugin());
+// compiler.apply(new DashboardPlugin());
 
 app.use(
 	require('webpack-dev-middleware')(compiler, {
