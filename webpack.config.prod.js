@@ -7,7 +7,7 @@ import fs from 'fs';
 import dotenv from 'dotenv';
 import baseConfig from './webpack.config.base';
 
-const env = dotenv.config({ path: './prod.env' }).parsed;
+const env = dotenv.config({ path: './.env.prod' }).parsed;
 
 const envKeys = Object.keys(env).reduce((prev, next) => {
 	prev[`process.env.${next}`] = JSON.stringify(env[next]);
