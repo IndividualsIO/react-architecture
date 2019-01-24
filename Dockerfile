@@ -1,6 +1,6 @@
 FROM node:8.7.0
 
-MAINTAINER Carlos Abdalla
+LABEL maintainer="Carlos Abdalla"
 
 RUN apt-get update && apt-get -y install apt-transport-https curl
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
