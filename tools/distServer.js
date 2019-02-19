@@ -12,9 +12,8 @@ app.use(compression());
 app.use(express.static('dist'));
 
 app.get('*', function(req, res) {
-	// res.sendFile('index.html');
-	// res.sendFile('index.html', { root: __dirname });
-	res.sendFile(path.join(__dirname, '/dist/index.html'));
+	// res.sendFile('index.html', { root: __dirname }); //SIMULATE PROD LOCALLY
+	res.sendFile(path.join(__dirname, '/dist/index.html')); //TO DEPLOY
 });
 
 app.listen(port, function(err) {

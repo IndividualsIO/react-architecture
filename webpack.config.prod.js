@@ -1,10 +1,11 @@
+import autoprefixer from 'autoprefixer';
+import dotenv from 'dotenv';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import fs from 'fs';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import path from 'path';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
-import path from 'path';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import fs from 'fs';
-import dotenv from 'dotenv';
 import baseConfig from './webpack.config.base';
 
 const env = dotenv.config({ path: './.env.prod' }).parsed;
@@ -19,10 +20,14 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 export default merge(baseConfig, {
 	mode: 'production',
+	resolve: {
+		extensions: ['*', '.js', '.jsx', '.json'],
+		modules: [resolveApp('src'), 'node_modules']
+	},
 	// devtool: 'source-map',
-	entry: ['@babel/polyfill', path.resolve(__dirname, 'src/index.js')],
+	entry: ['@babel/polyfill', resolveApp('src/index.js')],
 	devServer: {
-		contentBase: path.resolve(__dirname, 'dist')
+		contentBase: resolveApp('dist')
 	},
 	plugins: [
 		new webpack.optimize.OccurrenceOrderPlugin(),
@@ -71,12 +76,47 @@ export default merge(baseConfig, {
 						}
 					},
 					{
-						test: /\.(css|scss)$/,
+						test: /\.css$/,
 						use: [
 							// fallback to style-loader in development
 							MiniCssExtractPlugin.loader,
-							'css-loader',
-							'sass-loader'
+							'css-loader'
+						]
+					},
+					{
+						test: /\.scss$/,
+						use: [
+							require.resolve('style-loader'),
+							{
+								loader: require.resolve('css-loader'),
+								options: {
+									importLoaders: 1,
+									modules: true,
+									localIdentName: '[name]__[local]___[hash:base64:5]'
+								}
+							},
+							{
+								loader: require.resolve('postcss-loader'),
+								options: {
+									// Necessary for external CSS imports to work
+									ident: 'postcss',
+									plugins: () => [
+										require('postcss-flexbugs-fixes'),
+										autoprefixer({
+											browsers: [
+												'>1%',
+												'last 4 versions',
+												'Firefox ESR',
+												'not ie < 9' // React doesn't support IE8 anyway
+											],
+											flexbox: 'no-2009'
+										})
+									]
+								}
+							},
+							{
+								loader: 'sass-loader' // compiles Sass to CSS
+							}
 						]
 					},
 					// "file" loader makes sure those assets get served by WebpackDevServer.

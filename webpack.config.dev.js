@@ -1,9 +1,9 @@
-import webpack from 'webpack';
-import merge from 'webpack-merge';
-import path from 'path';
 import autoprefixer from 'autoprefixer';
 import dotenv from 'dotenv';
 import fs from 'fs';
+import path from 'path';
+import webpack from 'webpack';
+import merge from 'webpack-merge';
 import baseConfig from './webpack.config.base';
 
 const appDirectory = fs.realpathSync(process.cwd());
@@ -24,10 +24,17 @@ export default merge(baseConfig, {
 		'@babel/polyfill',
 		'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
 		'webpack-hot-middleware/client?reload=true',
-		path.resolve(__dirname, 'src/index.js') // Defining path seems necessary for this to work consistently on Windows machines.\
+		resolveApp('src/index.js') // Defining path seems necessary for this to work consistently on Windows machines.\
 	],
+	resolve: {
+		alias: {
+			'react-dom': '@hot-loader/react-dom'
+		},
+		extensions: ['*', '.js', '.jsx', '.json'],
+		modules: [resolveApp('src'), 'node_modules']
+	},
 	devServer: {
-		contentBase: path.resolve(__dirname, 'src'),
+		contentBase: resolveApp('src'),
 		hot: true
 	},
 	plugins: [
@@ -77,21 +84,18 @@ export default merge(baseConfig, {
 					// In production, we use a plugin to extract that CSS to a file, but
 					// in development "style" loader enables hot editing of CSS.
 					{
-						test: /\.scss$/,
+						test: /\.css$/,
 						use: [
 							{
 								loader: 'style-loader' // creates style nodes from JS strings
 							},
 							{
 								loader: 'css-loader' // translates CSS into CommonJS
-							},
-							{
-								loader: 'sass-loader' // compiles Sass to CSS
 							}
 						]
 					},
 					{
-						test: /\.css$/,
+						test: /\.scss$/,
 						use: [
 							require.resolve('style-loader'),
 							{
@@ -120,6 +124,9 @@ export default merge(baseConfig, {
 										})
 									]
 								}
+							},
+							{
+								loader: 'sass-loader' // compiles Sass to CSS
 							}
 						]
 					},
