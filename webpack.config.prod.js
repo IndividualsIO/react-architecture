@@ -1,8 +1,9 @@
+import fs from 'fs';
 import autoprefixer from 'autoprefixer';
 import dotenv from 'dotenv';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import fs from 'fs';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
@@ -29,6 +30,29 @@ export default merge(baseConfig, {
 	devServer: {
 		contentBase: resolveApp('dist')
 	},
+	optimization: {
+		runtimeChunk: 'single',
+		splitChunks: {
+			chunks: 'all',
+			maxInitialRequests: Infinity,
+			minSize: 0,
+			cacheGroups: {
+				vendor: {
+					test: /[\\/]node_modules[\\/]/,
+					name(module) {
+						// get the name. E.g. node_modules/packageName/not/this/part.js
+						// or node_modules/packageName
+						const packageName = module.context.match(
+							/[\\/]node_modules[\\/](.*?)([\\/]|$)/
+						)[1];
+
+						// npm package names are URL-safe, but some servers don't like @ symbols
+						return `npm.${packageName.replace('@', '')}`;
+					}
+				}
+			}
+		}
+	},
 	plugins: [
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.DefinePlugin(envKeys),
@@ -37,8 +61,12 @@ export default merge(baseConfig, {
 		new MiniCssExtractPlugin({
 			// Options similar to the same options in webpackOptions.output
 			// both options are optional
-			filename: '/static/[name].css',
-			chunkFilename: '/static/[id].css'
+			filename: 'static/[name].css',
+			chunkFilename: 'static/[name].css'
+		}),
+		new HtmlWebpackPlugin({
+			title: 'Individuals',
+			template: 'tools/index.html'
 		})
 	],
 	module: {
