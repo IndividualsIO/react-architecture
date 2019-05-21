@@ -1,4 +1,4 @@
-FROM node:8.7.0
+FROM node:latest
 
 LABEL maintainer="Carlos Abdalla"
 
@@ -10,6 +10,8 @@ LABEL maintainer="Carlos Abdalla"
 
 ADD . /app
 WORKDIR /app
+
+# RUN npm i
 
 EXPOSE 3000
 
