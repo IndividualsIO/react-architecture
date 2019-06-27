@@ -1,34 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
 import Header from './common/header';
 import routes from '../routes';
 
-class App extends React.Component {
-	componentDidCatch() {
-		//DO SOMETHING ( error ) = PARAM
-	}
+const App = () => {
+	const isFetching = useSelector(state => state.ajax.inProgress > 0);
 
-	render() {
-		return (
-			<div>
-				{Header({
-					isFetching: this.props.isFetching
-				})}
-				{routes}
-			</div>
-		);
-	}
-}
-
-// Validation
-App.propTypes = {
-	isFetching: PropTypes.bool.isRequired
+	return (
+		<div>
+			{Header({ isFetching })}
+			{routes}
+		</div>
+	);
 };
 
-const mapStateToProps = state => ({
-	isFetching: state.ajax.inProgress > 0
-});
-
-export default hot(connect(mapStateToProps)(App));
+export default hot(App);
