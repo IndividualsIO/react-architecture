@@ -102,7 +102,7 @@
 		"express": "4.17.3",
 		"extract-text-webpack-plugin": "4.0.0-beta.0",
 		"file-loader": "6.2.0",
-		"husky": "4.3.0",
+		"husky": "4.3.8",
 		"jsdom": "16.5.0",
 		"lint-staged": "10.4.0",
 		"mini-css-extract-plugin": "0.11.3",
